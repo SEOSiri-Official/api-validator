@@ -1,0 +1,81 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "API Review and Validation Spec",
+  "description": "A schema for evaluating an API based on key quality factors.",
+  "type": "object",
+  "properties": {
+    "apiName": { "type": "string", "description": "The common name of the API being reviewed." },
+    "architecture": { "type": "string", "enum": ["REST", "GraphQL", "SOAP", "gRPC"] },
+    "version": { "type": "string", "description": "The specific version of the API being reviewed (e.g., 'v3', '2022-11-15')." },
+    "functionality": {
+      "type": "object",
+      "description": "How well the API aligns with business needs.",
+      "properties": {
+        "endGoal": { "type": "string", "description": "Primary business goal this API helps achieve." },
+        "requiredFeatures": { "type": "array", "items": { "type": "string" }, "description": "List of must-have features the API provides." },
+        "featureCoverage": {
+          "type": "array",
+          "description": "Checklist of project requirements and whether this API covers them.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "requirement": { "type": "string" },
+              "isCovered": { "type": "boolean" }
+            },
+            "required": ["requirement", "isCovered"]
+          }
+        },
+        "notes": { "type": "string", "description": "General notes on functionality." }
+      }, "required": ["endGoal"]
+    },
+    "integration": {
+      "type": "object",
+      "description": "Ease of integration and quality of documentation.",
+      "properties": {
+        "documentationUrl": { "type": "string", "format": "uri" },
+        "sdkAvailability": { "type": "array", "items": { "type": "string" }, "description": "List of available SDKs (e.g., 'JavaScript', 'Python')." },
+        "clarityScore": { "type": "integer", "enum": [1, 2, 3, 4, 5], "description": "Score (1-5) for documentation clarity." }
+      }
+    },
+    "security": {
+      "type": "object",
+      "description": "Security measures and compliance.",
+      "properties": {
+        "authentication": { "type": "string", "enum": ["OAuth 2.0", "API Key", "JWT", "Basic Auth", "Other"] },
+        "dataEncryption": { "type": "boolean", "description": "Does the API enforce TLS/SSL?" },
+        "compliance": { "type": "array", "items": { "type": "string", "enum": ["GDPR", "HIPAA", "PCI-DSS", "None"] } }
+      }, "required": ["authentication", "dataEncryption"]
+    },
+    "performance": {
+      "type": "object",
+      "description": "Scalability and performance metrics.",
+      "properties": {
+        "slaUptime": { "type": "string", "description": "Advertised uptime SLA (e.g., '99.95%')." },
+        "statusPageUrl": { "type": "string", "format": "uri" },
+        "avgResponseTimeMs": { "type": "integer", "description": "Average latency in milliseconds." },
+        "testEndpoint": { "type": "string", "format": "uri", "description": "A simple GET endpoint to test API latency." },
+        "p95LatencyMs": { "type": "integer", "description": "95th percentile latency (upstream/downstream time)." },
+        "p99LatencyMs": { "type": "integer", "description": "99th percentile latency (upstream/downstream time)." }
+      }
+    },
+    "cost": {
+      "type": "object",
+      "description": "Pricing model and potential hidden costs.",
+      "properties": {
+        "pricingModel": { "type": "string", "enum": ["Pay-as-you-go", "Subscription", "Freemium", "Volume-based", "Free"] },
+        "pricingUrl": { "type": "string", "format": "uri" },
+        "notes": { "type": "string", "description": "Notes on rate limits, overage charges, etc." }
+      }
+    },
+    "vendor": {
+      "type": "object",
+      "description": "Vendor reliability and innovation.",
+      "properties": {
+        "name": { "type": "string" },
+        "lastUpdate": { "type": "string", "format": "date", "description": "Date of the last significant API update." },
+        "partnerLink": { "type": "string", "format": "uri", "description": "Link to official partner page or special offer." }
+      }
+    }
+  },
+  "required": ["apiName", "architecture"]
+}

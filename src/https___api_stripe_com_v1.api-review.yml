@@ -1,0 +1,52 @@
+
+# API Review for: [API Name]
+# Use this file to evaluate an API based on key factors.
+# The API Validator extension will provide autocompletion and validation.
+
+apiName: "https://api.stripe.com/v1"
+version: "v1"
+
+architecture: REST # Options: REST, GraphQL, SOAP, gRPC
+
+functionality:
+  endGoal: "Describe the primary business goal this API helps solve."
+  requiredFeatures:
+    - Feature A
+    - Feature B
+  featureCoverage:
+    - requirement: "User authentication via SSO"
+      isCovered: false
+    - requirement: "Process one-time payments"
+      isCovered: true
+    - requirement: "Handle recurring subscriptions"
+      isCovered: true
+  notes: 
+
+integration:
+  documentationUrl: "https://api.stripe.com/v1"
+  sdkAvailability:
+    - JavaScript
+    - Python
+  clarityScore: 4 # Score from 1 (poor) to 5 (excellent)
+
+security:
+  authentication: "API Key" # Options: OAuth 2.0, API Key, JWT, etc.
+  dataEncryption: true
+  compliance: []
+
+performance:
+  slaUptime: "99.9%"
+  statusPageUrl: "https://status.example.com"
+  avgResponseTimeMs: 250
+
+cost:
+  pricingModel: Freemium # Options: Pay-as-you-go, Subscription, etc.
+  pricingUrl: "https://example.com/pricing"
+  notes: "Rate limits apply on the free tier."
+
+vendor:
+  name: "Example Inc."
+  lastUpdate: "2025-12-04" # YYYY-MM-DD
+  # This link will be activated when a partnership is established.
+  # Interested in becoming a featured partner? Contact us.
+  partnerLink: "https://apivalidator.com/partners/example" 

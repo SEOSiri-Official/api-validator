@@ -1,0 +1,93 @@
+{
+  "name": "api-validator",
+  "displayName": "API Validator",
+  "description": "An intelligent assistant for evaluating and securing APIs.",
+  "version": "0.0.1",
+   "icon": "media/icon.png",
+  "repository": { 
+    "type": "git",
+    "url": "https://github.com/SEOSiri-Official/api-validator.git"
+  },
+  "engines": {
+    "vscode": "^1.83.0"
+  },
+  "categories": [
+    "Linters",
+    "Testing",
+    "Security",
+    "Other"
+  ],
+  "keywords": [
+    "api",
+    "validator",
+    "linter",
+    "security",
+    "governance",
+    "rest",
+    "graphql",
+    "threat",
+    "malware",
+    "phishing",
+    "audit",
+    "documentation",
+    "quality",
+    "testing",
+    "sla",
+    "endpoint"
+  ],
+  "activationEvents": [
+    "onLanguage:yaml"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "api-validator.newReviewFile",
+        "title": "API Validator: New API Review File",
+        "category": "API Validator"
+      },
+      {
+        "command": "api-validator.scanProjectForApis",
+        "title": "API Validator: Scan Project for APIs",
+        "category": "API Validator"
+      },
+      {
+        "command": "api-validator.testEndpoint",
+        "title": "API Validator: Test Endpoint Latency",
+        "category": "API Validator"
+      }
+    ],
+    "yamlValidation": [
+      {
+        "fileMatch": "*.api-review.yml",
+        "url": "./schemas/api-review.schema.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./ && npm run copy-assets",
+    "copy-assets": "cpy \"./{data,schemas}/**/*\" \"./out/\"",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/node-fetch": "^2.6.13",
+    "@types/vscode": "^1.83.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.8",
+    "cpy-cli": "^5.0.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "yaml": "^2.3.4"
+  }
+}
