@@ -1,6 +1,7 @@
 {
   "name": "api-validator",
   "displayName": "API Validator",
+  "publisher": "SEOSiri",
   "description": "An intelligent assistant for evaluating and securing APIs.",
   "version": "0.0.1",
    "icon": "media/icon.png",
