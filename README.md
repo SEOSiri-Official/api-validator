@@ -30,8 +30,7 @@ API Validator solves this by providing a structured, in-editor framework to eval
 *   📄 **One-Click Scaffolding:** Generate new, templated review files with a single command to get started in seconds.
 *   📊 **Side-by-Side API Comparison (Planned):** The structured nature of our review files is designed to support a powerful comparison tool. Select multiple APIs to see a detailed breakdown and choose the winning solution. *(This command is on our immediate roadmap!)*
 
-![Screenshot of API Validator in action](https://your-link-to-a-screenshot-or-gif.com/demo.gif)
-*(Pro-tip: Create a GIF of the extension working and place it here. This dramatically increases adoption.)*
+![API Validator in Action](https://i.imgur.com/g9skF4E.gif) 
 
 ---
 
